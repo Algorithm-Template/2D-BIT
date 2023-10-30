@@ -20,4 +20,4 @@ template <class T, int N, int... Ns> struct BIT<T, N, Ns...> {
 };
 // BIT<int,10,10> gives a 2D BIT
 //upd(x,y,val)
-//query(x1,x2,y1,y2) for (x1,y1) (x2,y2)
+//query(y1,y2,x1,x2) for (x1,y1) (x2,y2)
