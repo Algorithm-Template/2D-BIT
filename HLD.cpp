@@ -36,7 +36,7 @@ struct ST {
         build(rc, mid + 1, e);
         pull(n);
     }
-    void upd(int n, int b, int e, int i, int j, int v) {
+    void upd(int n, int b, int e, int i, int j, int v) { //upd(1,1,n,l,r,val) call in this way
         push(n, b, e);
         if(j < b || e < i) return;
         if(i <= b && e <= j) {
@@ -49,7 +49,7 @@ struct ST {
         upd(rc, mid + 1, e, i, j, v);
         pull(n);
     }
-    int query(int n, int b, int e, int i, int j) {
+    int query(int n, int b, int e, int i, int j) {   //quer(1,1,n,l,r)  call in this way
         push(n, b, e);
         if(i > e || b > j) return -inf;
         if(i <= b && e <= j) return t[n];
