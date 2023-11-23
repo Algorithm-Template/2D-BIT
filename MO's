@@ -1,0 +1,45 @@
+//other stuff to be done here. This is just for understanding sorting 
+//and the implementation of Mo's Algorithm
+long long block;
+
+struct queries {
+    long long l, r, idx, ans;
+};
+ 
+vector<queries> query;
+ 
+bool cmp(queries a, queries b) {
+    if((a.l / block) != (b.l / block))
+        return ((a.l / block) < (b.l / block));
+    return a.r < b.r;
+}
+
+int main() {
+    //input to be taken
+    block = (long long)(sqrt(n));
+    sort(query.begin(), query.begin() + q, cmp); //query is the array for queries
+    //q is the number of queries
+    long long currL = 1, currR = n, sum = 0;
+    for(long long i = 0; i < query.size(); i++) {
+        long long l = query[i].l, r = query[i].r;
+        while(currL < l) {
+            sum -= a[currL];
+            currL++;
+        }
+        while(currL > l) {
+            currL--;
+            sum += a[currL];
+        }
+        while(currR < r) {
+            currR++;
+            sum += a[currR];
+        }
+        while(currR > r) {
+            sum -= a[currR];
+            currR--;
+        }
+        query[i].ans = sum;
+    }
+    //now we sort the queries by indexes to give the answer to the corresponding query
+    //output the answer to the corresponding query
+}
